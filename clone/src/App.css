@@ -1,0 +1,478 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #faf9f9;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(56, 148, 223), rgb(25, 9, 171));
+
+}
+
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ffffff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 2rem;
+  color: #00b5e2; /* Paytm Blue */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-form {
+  width: 90%;
+  max-width: 350px;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.options a {
+  color: #00b5e2; /* Paytm Blue */
+  text-decoration: none;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background-color: #00b5e2; /* Paytm Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-login:hover {
+  background-color: #003d70; /* Paytm Dark Blue */
+}
+
+/* Landing Page Styles */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+    
+}
+/* Header Section */
+.header-section {
+  display: flex;
+  justify-content: space-between; /* Ensures icons are on opposite ends */
+  align-items: center;
+  padding: 30px;
+  color: white;
+  border-radius: 10px;
+  background: linear-gradient(to right, rgb(6, 134, 239), rgb(25, 9, 171));
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-search {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  padding: 10px;
+  width: 450px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  outline: none;  
+  background-color: white;
+}
+
+.header-icons span {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  margin: 0 10px;
+}
+
+.header-icons span:hover {
+  color: #1e90ff; /* Hover effect with a lighter blue */
+}
+
+/* Profile icon section */
+.profile-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  margin: 0 10px;
+}
+
+/* Dashboard icon section */
+.dashboard-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  margin-right: 10px;
+}
+
+/* Balance and Fundraisers Section */
+.balance-fundraisers {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+  justify-content: center;
+  min-width: fit-content;
+  padding: 20px;
+
+}
+
+/* Card Styles */
+.card {
+  flex: 1;
+  padding: 20px;
+  color: #fefafa;
+  background-color: #080808; /* Lighter shade for better readability */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 10px;
+}
+
+.card h3 {
+  margin-bottom: 1px;
+  font-size: 1.6rem;
+  color: #f9f9f9; /* Slightly darker for contrast */
+}
+
+.card p,
+.card a {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card a {
+  color: #0077cc; /* Accessible blue tone */
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  margin: 20px 0;
+  position: relative;
+  max-height:;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 10px;
+  position: relative; /* Ensures the buttons stay positioned */
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.4s ease-in-out; /* Slightly slower for smooth effect */
+}
+
+.carousel-image {
+  min-width: 100%;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.carousel-image img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Ensures consistent image scaling */
+}
+
+/* Buttons for Carousel */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%; /* Rounded buttons for better aesthetics */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.carousel-button-left {
+  left: 10px;
+}
+
+.carousel-button-right {
+  right: 10px;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .balance-fundraisers {
+    flex-direction: column;
+    align-items: center; /* Center-align for smaller screens */
+  }
+
+  .card {
+    max-width: 100%; /* Use full width on smaller screens */
+  }
+
+  .carousel-image img {
+    object-fit: contain; /* Ensure images fit nicely in narrow spaces */
+  }
+}
+
+
+/* Send Again Section */
+/* Send Again Section */
+.send-again-section {
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #080808; /* Card background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Modern card shadow */
+  max-width: 4000px; /* Set width for central alignment */
+  text-align: center;
+  border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.send-again-title {
+  color: #faf9f9; /* Title color */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Optional for styling */
+  letter-spacing: 1px; /* Slight spacing for text */
+}
+
+.profiles {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1; /* Equal width for all profiles */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.profile:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow */
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: #f0f8ff; /* Light background for icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle icon shadow */
+}
+
+.profile i {
+  font-size: 28px;
+  color: #007bff; /* Icon color */
+}
+
+.profile p {
+  font-size: 14px;
+  color: #555; /* Text color */
+  margin: 0;
+  font-weight: 500; /* Slightly bold for text */
+}
+
+/* Profiles Section */
+.profiles {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.profile p {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #ddd;
+}
+/* Transactions Section */
+.transactions-section {
+  padding: 20px;
+  background-color: #0c0c0c;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adds spacing between the cards */
+}
+
+/* Individual Transaction Card */
+.transaction {
+  background-color: #1a1a1a; /* Dark background for each card */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Example of a section within a card */
+.transaction-detail {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Style for text inside the transaction card */
+.transaction-title {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.transaction-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00b894; /* Example: Green color for amount */
+}
+
+
+/* Footer Section */
+.footer-section {
+  position: fixed; /* Fix the footer at the bottom */
+  bottom: 0; /* Make sure it sticks to the bottom */
+  left: 50%; /* Center the footer */
+  transform: translateX(-50%); /* Adjust to center it */
+  width: 33.6%; /* Take full width of the viewport */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #003d70; /* Paytm Dark Blue */
+  color: #ddd;
+  border-top: 1px solid #333;
+  border-radius: 50px; 
+  z-index: 10; /* Ensure the footer is above other content */
+}
+
+
+/* Footer Icon Styles */
+.footer-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  width: 90px;
+}
+
+.footer-icon i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.footer-icon:hover {
+  color: #1e90ff;
+}
+
+/* QR Code Popup */
+.qr-code-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(6, 5, 5);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border-radius: 8px;
+  display: none;
+}
+
+.qr-code-popup img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  padding: 8px 16px;
+  background-color: #00b5e2; /* Paytm Blue */
+  color: rgb(10, 10, 10);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #003d70; /* Paytm Dark Blue */
+}
