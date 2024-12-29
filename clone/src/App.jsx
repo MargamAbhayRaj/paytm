@@ -2,34 +2,67 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/landing" element={<LandingPage />} />
-      </Routes>
-    </Router>
-  );
-}
-
 function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSignIn = () => {
-    navigate("/landing");
+  const handleSignIn = async () => {
+    if (!email || !password) {
+      setError("Both email and password are required!");
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        setError("");
+        navigate("/landing");
+      } else {
+        setError(data.message || "Login failed!");
+      }
+    } catch (err) {
+      setError("Connection error. Please try again.");
+    }
+  };
+
+  const handleSignUp = () => {
+    navigate("/signup");
   };
 
   return (
     <div className="login-container">
-      <div className="logo">PayPal</div>
+      <div className="logo">Paynow</div>
       <div className="login-form">
         <h2>Sign In</h2>
-        <input type="text" placeholder="Email address or Phone number" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="text"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && <p className="error-message">{error}</p>}
         <div className="options">
-          <a href="#">Forgotten?</a>
-          <a href="#">New to PayPal? Sign up</a>
+          <a href="#">Forgot Password?</a>
+          <a href="#" onClick={handleSignUp}>
+            New to Paynow? Sign up
+          </a>
         </div>
         <button className="btn-login" onClick={handleSignIn}>
           Sign In
@@ -39,7 +72,108 @@ function Login() {
   );
 }
 
+function Signup() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSignup = async () => {
+    if (!email || !password || !confirmPassword) {
+      setError("All fields are required!");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        setError("");
+        navigate("/login");
+      } else {
+        setError(data.message || "Signup failed!");
+      }
+    } catch (err) {
+      setError("Connection error. Please try again.");
+    }
+  };
+
+  return (
+    <div className="signup-container">
+      
+      <div className="signup-form">
+        <h2>Sign Up</h2>
+        <input
+          type="text"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm your password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        {error && <p className="error-message">{error}</p>}
+        <button className="btn-signup" onClick={handleSignup}>
+          Sign Up
+        </button>
+        <p>
+          Already have an account?{" "}
+          <a href="#" onClick={() => navigate("/login")}>
+            Sign In
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function LandingPage() {
+  return (
+    <div className="landing-container">
+      <h1>Welcome to Paynow!</h1>
+      <p>This is the landing page after successful login.</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/landing" element={<LandingPages />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function LandingPages() {
+  const navigate = useNavigate();
   const images = [
     "p-1.png",
     "p-2.png",
@@ -55,16 +189,32 @@ function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const imagesToShow = 3; // Number of images visible at a time
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [transactions, setTransactions] = useState([
+    { id: 1, name: "Diego B.", date: "15 Oct", type: "Request received", amount: "25.00 RS", initials: "DB" },
+    { id: 2, name: "Alisha H.", date: "10 Oct", type: "Request received", amount: "10.00 RS", initials: "AH" },
+    { id: 3, name: "Wonku", date: "30 Sept", type: "Automatic Payment", amount: "15.99 RS", initials: "W" },
+  ]);
+  
+  // Sidebar visibility state
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
 
   const nextSlide = () => {
     if (currentIndex < images.length - imagesToShow) {
       setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0); // Reset to the first image if at the end
     }
   };
 
   const prevSlide = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
+    } else {
+      setCurrentIndex(images.length - imagesToShow); // Go to the last image if at the start
     }
   };
 
@@ -72,14 +222,38 @@ function LandingPage() {
     setSearchQuery(event.target.value);
   };
 
+  // Filter transactions based on search query
+  const filteredTransactions = transactions.filter(transaction =>
+    transaction.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    transaction.date.includes(searchQuery)
+  );
+
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
   return (
-    <div className="landing-page">
+    <div className={`landing-page ${sidebarVisible ? 'sidebar-active' : ''}`}>
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarVisible ? 'visible' : ''}`}>
+        <div className="sidebar-header">
+          <h3>Menu</h3>
+          <button className="close-sidebar" onClick={toggleSidebar}>×</button>
+        </div>
+        <ul className="sidebar-menu">
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#transactions">Transactions</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#" onClick={handleLogout}>Log out</a></li>
+        </ul>
+      </div>
+
       {/* Header Section */}
       <div className="header-section">
         <div className="header-left">
-          <span className="dashboard-icon">
-            <i className="fas fa-chart-bar"></i> {/* Dashboard Icon */}
-          </span>
+          <button className="menu-toggle" onClick={toggleSidebar}>
+            <i className="fas fa-bars"></i>
+          </button>
         </div>
 
         {/* Search Bar Section */}
@@ -126,61 +300,17 @@ function LandingPage() {
       {/* Transactions Section */}
       <div className="transactions-section">
         <h4>Recent Transactions</h4>
-        <div className="transaction">
-          <div className="circle">DB</div>
-          <div className="details">
-            <p>Diego B.</p>
-            <p>15 Oct</p>
-            <p>Request received</p>
-          </div>
-          <p className="amount">-£25.00</p>
-        </div>
-        <div className="transaction">
-          <div className="circle">AH</div>
-          <div className="details">
-            <p>Alisha H.</p>
-            <p>10 Oct</p>
-            <p>Request received</p>
-          </div>
-          <p className="amount">-£10.00</p>
-        </div>
-        <div className="transaction">
-          <div className="circle">W</div>
-          <div className="details">
-            <p>Wonku</p>
-            <p>30 Sept</p>
-            <p>Automatic Payment</p>
-          </div>
-          <p className="amount">-£15.99</p>
-        </div>
-      </div>
-
-      {/* Balance and Fundraisers Section */}
-      <div className="balance-fundraisers">
-        <div className="card">
-          <h3>Fundraisers</h3>
-          <p>Support the causes that matter to you</p>
-          <div className="carousel-container">
-            <div className="carousel">
-              <div
-                className="carousel-images"
-                style={{ transform: `translateX(-${currentIndex * (100 / imagesToShow)}%)` }}
-              >
-                {images.map((image, index) => (
-                  <div className="carousel-image" key={index}>
-                    <img src={image} alt={`Image ${index + 1}`} />
-                  </div>
-                ))}
-              </div>
-              <button className="carousel-button carousel-button-left" onClick={prevSlide}>
-                &#10094;
-              </button>
-              <button className="carousel-button carousel-button-right" onClick={nextSlide}>
-                &#10095;
-              </button>
+        {filteredTransactions.map((transaction) => (
+          <div className="transaction" key={transaction.id}>
+            <div className="circle">{transaction.initials}</div>
+            <div className="details">
+              <p>{transaction.name}</p>
+              <p>{transaction.date}</p>
+              <p>{transaction.type}</p>
             </div>
+            <p className="amount">{transaction.amount}</p>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* Footer Section */}

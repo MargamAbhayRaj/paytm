@@ -15,10 +15,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #ffffff;
-  padding: 10px;
+  background: linear-gradient(to right, rgb(31, 47, 60), rgb(21, 20, 21));
+  padding: 20px;
   box-sizing: border-box;
+  border-radius: 10%;
 }
 
 .logo {
@@ -34,7 +34,7 @@ body {
   max-width: 350px;
   padding: 20px;
   border: 1px solid #e1e1e1;
-  border-radius: 8px;
+  border-radius: 50px;
   background-color: #fff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -48,10 +48,10 @@ body {
 
 .login-form input {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 50px;
   box-sizing: border-box;
 }
 
@@ -59,11 +59,13 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
+  
 }
 
 .options a {
   color: #00b5e2; /* Paytm Blue */
   text-decoration: none;
+  gap: 1 rem;
 }
 
 .options a:hover {
@@ -72,34 +74,101 @@ body {
 
 .btn-login {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   background-color: #00b5e2; /* Paytm Blue */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 1rem;
 }
 
 .btn-login:hover {
-  background-color: #003d70; /* Paytm Dark Blue */
+  background: linear-gradient(to right, rgb(212, 11, 209), rgb(62, 10, 55));
 }
+/* signup*/
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.signup-form {
+  background-color: rgb(219, 234, 13);
+  padding: 30px;
+  border-radius:50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f7f9fa;
+}
+
+.signup-form input:focus {
+  outline: none;
+  border-color: #6a11cb;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+}
+
+.btn-signup {
+  width: 100%;
+  padding: 12px;
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-signup:hover {
+  background-color: #2575fc;
+}
+
+@media (max-width: 768px) {
+  .signup-form {
+    padding: 2px;
+  }
+
+  .signup-form h2 {
+    font-size: 1.5rem;
+    color: #080808;
+  }
+}
+
 
 /* Landing Page Styles */
 .landing-page {
   display: flex;
   flex-direction: column;
-    
+  max-width: 100%;
+  padding: 15px;
 }
 /* Header Section */
 .header-section {
   display: flex;
-  justify-content: space-between; /* Ensures icons are on opposite ends */
+  justify-content: space-between;
   align-items: center;
-  padding: 30px;
-  color: white;
-  border-radius: 10px;
-  background: linear-gradient(to right, rgb(6, 134, 239), rgb(25, 9, 171));
+  padding: 10px;
+  gap: 10px;
 }
 
 .header-left, .header-right {
@@ -108,19 +177,14 @@ body {
 }
 
 .header-search {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
+  flex: 1;
 }
 
 .search-bar {
-  padding: 10px;
-  width: 450px;
-  border-radius: 50px;
-  border: none;
-  font-size: 1rem;
-  outline: none;  
-  background-color: white;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
 }
 
 .header-icons span {
@@ -194,84 +258,6 @@ body {
   text-decoration: underline;
 }
 
-/* Carousel Styles */
-.carousel-container {
-  margin: 20px 0;
-  position: relative;
-  max-height:;
-}
-
-.carousel {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  border-radius: 10px;
-  position: relative; /* Ensures the buttons stay positioned */
-}
-
-.carousel-images {
-  display: flex;
-  transition: transform 0.4s ease-in-out; /* Slightly slower for smooth effect */
-}
-
-.carousel-image {
-  min-width: 100%;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.carousel-image img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover; /* Ensures consistent image scaling */
-}
-
-/* Buttons for Carousel */
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  padding: 12px;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 50%; /* Rounded buttons for better aesthetics */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.carousel-button-left {
-  left: 10px;
-}
-
-.carousel-button-right {
-  right: 10px;
-}
-
-.carousel-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .balance-fundraisers {
-    flex-direction: column;
-    align-items: center; /* Center-align for smaller screens */
-  }
-
-  .card {
-    max-width: 100%; /* Use full width on smaller screens */
-  }
-
-  .carousel-image img {
-    object-fit: contain; /* Ensure images fit nicely in narrow spaces */
-  }
-}
-
-
 /* Send Again Section */
 /* Send Again Section */
 .send-again-section {
@@ -295,47 +281,28 @@ body {
 }
 
 .profiles {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 15px;
+  padding: 10px 0;
 }
 
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  flex: 1; /* Equal width for all profiles */
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.profile:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add hover shadow */
-}
-
-.icon-wrapper {
-  width: 60px;
-  height: 60px;
-  background-color: #f0f8ff; /* Light background for icon */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle icon shadow */
+  text-align: center;
+  padding: 10px;
 }
 
 .profile i {
-  font-size: 28px;
-  color: #007bff; /* Icon color */
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .profile p {
-  font-size: 14px;
-  color: #555; /* Text color */
+  font-size: 12px;
   margin: 0;
-  font-weight: 500; /* Slightly bold for text */
 }
 
 /* Profiles Section */
@@ -407,41 +374,29 @@ body {
 
 /* Footer Section */
 .footer-section {
-  position: fixed; /* Fix the footer at the bottom */
-  bottom: 0; /* Make sure it sticks to the bottom */
-  left: 50%; /* Center the footer */
-  transform: translateX(-50%); /* Adjust to center it */
-  width: 33.6%; /* Take full width of the viewport */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: #003;
   padding: 10px;
-  background-color: #003d70; /* Paytm Dark Blue */
-  color: #ddd;
-  border-top: 1px solid #333;
-  border-radius: 50px; 
-  z-index: 10; /* Ensure the footer is above other content */
+  gap: 5px;
 }
 
-
-/* Footer Icon Styles */
 .footer-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 14px;
-  color: #fff;
-  cursor: pointer;
-  width: 90px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
 }
 
 .footer-icon i {
   font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.footer-icon:hover {
-  color: #1e90ff;
+  margin-bottom: 4px;
 }
 
 /* QR Code Popup */
@@ -475,4 +430,192 @@ body {
 
 .close-btn:hover {
   background-color: #003d70; /* Paytm Dark Blue */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  width: 250px;
+  background: #1a237e;
+  color: white;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.visible {
+  left: 0;
+}
+
+.sidebar-header {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1a237e;
+  padding: 10px;
+}
+
+/* Adjust main content when sidebar is visible */
+.landing-page {
+  transition: margin-left 0.3s ease;
+}
+
+.landing-page.sidebar-active {
+  margin-left: 250px;
+}
+
+/* Overlay for mobile */
+@media (max-width: 768px) {
+  .sidebar.visible {
+    left: 0;
+  }
+  
+  .landing-page.sidebar-active {
+    margin-left: 0;
+  }
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+  .header-section {
+    flex-wrap: wrap;
+  }
+  
+  .header-search {
+    order: 2;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .profiles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .transaction {
+    padding: 10px;
+  }
+  
+  .circle {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .details p {
+    font-size: 14px;
+  }
+  
+  .footer-section {
+    padding: 8px 5px;
+  }
+  
+  .footer-icon {
+    font-size: 10px;
+  }
+  
+  .footer-icon i {
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 375px) {
+  .profiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .transaction {
+    grid-template-columns: auto 1fr;
+  }
+  
+  .amount {
+    grid-column: 1 / -1;
+    text-align: left;
+    padding-left: 55px;
+  }
+  
+  .footer-icon span {
+    display: none;
+  }
+}
+
+/* Adjust main content to prevent footer overlap */
+.landing-page {
+  padding-bottom: 70px;
+}
+
+/* Dark theme enhancements */
+.transaction {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search-bar {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure sidebar doesn't conflict with responsive layout */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  .landing-page.sidebar-active {
+    margin-left: 0;
+  }
+  
+  .sidebar.visible + .main-content {
+    opacity: 0.5;
+  }
 }
